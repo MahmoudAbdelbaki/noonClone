@@ -4,6 +4,8 @@ const connectDB = require("./config/db");
 const auth = require('./routes/auth');
 const productRouter = require('./routes/productRoutes');
 const orderRouter = require('./routes/orderRoutes');
+const cartRouter = require('./routes/cartRoutes');
+
 const path = require('path');
 
 // // Load environment variables
@@ -23,6 +25,7 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
+app.use('/api/cart', cartRouter);
 app.use('/api/products', productRouter);
 app.use('/api/auth', auth);
 app.use('/api/orders', orderRouter);
