@@ -8,14 +8,14 @@ const sendTokenResponse = (user, statusCode, res) => {
         httpOnly: true,
         expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), 
     };
-    
+
     res.status(statusCode).cookie('token', token, options).json({
         success: true,
         token,
     });
 };
 
-exports.register = async (req, res) => {
+register = async (req, res) => {
     const { name, email, password, role } = req.body;
 
     try {
@@ -32,7 +32,7 @@ exports.register = async (req, res) => {
     }
 } ;
 
-exports.login = async (req, res) => {
+login = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -58,3 +58,4 @@ exports.login = async (req, res) => {
     }
 };
 
+module.exports = { register, login };
