@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account | Ethereal Aromas</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/auth.css">
+
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <a href="index.html">ETHEREAL</a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="nav-link">Back to Home</a>
+        </div>
+    </header>
+
+    <main class="auth-wrapper">
+        <div class="auth-image">
+            <div class="overlay"></div>
+            <div class="auth-quote fade-up">
+                <p>"Scent is the art that makes memory speak."</p>
+                <span class="eyebrow">— The Atelier</span>
+            </div>
+        </div>
+
+        <div class="auth-content">
+            <div class="form-container fade-up delay-1">
+                
+                <div id="login-view">
+                    <span class="eyebrow">Welcome Back</span>
+                    <h2>Sign In</h2>
+                    
+                    <form id="login-form">
+                        <div class="input-group">
+                            <input type="email" id="login-email" required placeholder=" " autocomplete="email">
+                            <label for="login-email">Email Address</label>
+                        </div>
+                        
+                        <div class="input-group">
+                            <input type="password" id="login-password" required placeholder=" " autocomplete="current-password">
+                            <label for="login-password">Password</label>
+                        </div>
+
+                        <div class="form-actions">
+                            <a href="#" class="forgot-pass">Forgot Password?</a>
+                            <button type="submit" class="btn">Enter</button>
+                        </div>
+                    </form>
+
+                    <p class="switch-auth">
+                        New to Ethereal? <a href="#" id="show-register">Create an account</a>
+                    </p>
+                </div>
+
+                <div id="register-view" class="hidden">
+                    <span class="eyebrow">Become a Member</span>
+                    <h2>Join the Atelier</h2>
+                    
+                    <form id="register-form">
+                        <div class="input-group">
+                            <input type="text" id="reg-name" required placeholder=" " autocomplete="name">
+                            <label for="reg-name">Full Name</label>
+                        </div>
+
+                        <div class="input-group">
+                            <input type="email" id="reg-email" required placeholder=" " autocomplete="email">
+                            <label for="reg-email">Email Address</label>
+                        </div>
+                        
+                        <div class="input-group">
+                            <input type="password" id="reg-password" required placeholder=" " autocomplete="new-password">
+                            <label for="reg-password">Password</label>
+                        </div>
+
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+
+                    <p class="switch-auth">
+                        Already a member? <a href="#" id="show-login">Sign In</a>
+                    </p>
+                </div>
+
+                <div id="auth-message" class="auth-message hidden"></div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

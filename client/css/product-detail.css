@@ -1,0 +1,361 @@
+/* =========================================
+   PRODUCT DETAIL PAGE STYLES
+========================================= */
+
+/* Main container for the product detail page */
+.product-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 3rem 0;
+    min-height: 70vh;
+    align-items: start;
+}
+
+/* Breadcrumb navigation */
+.breadcrumb {
+    padding: 2rem 0 1rem 0;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.breadcrumb ol {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: "›";
+    margin-left: 0.5rem;
+    opacity: 0.5;
+}
+
+.breadcrumb a {
+    color: var(--color-text-muted);
+    transition: color 0.3s;
+}
+
+.breadcrumb a:hover {
+    color: var(--color-accent);
+}
+
+.breadcrumb [aria-current="page"] {
+    color: var(--color-text-primary);
+    pointer-events: none;
+}
+
+/* ===== PRODUCT GALLERY ===== */
+.product-gallery {
+    position: relative;
+    width: 100%;
+}
+
+.product-gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.5s var(--ease-luxury);
+}
+
+.product-gallery img:hover {
+    transform: scale(1.02);
+}
+
+/* ===== PRODUCT INFO ===== */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+/* 1. Category / Eyebrow Text */
+.product-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+/* 2. Main Title */
+.product-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+    font-weight: 400;
+}
+
+/* 3. Price */
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--color-text-primary);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* If you have a sale price */
+.product-price .original-price {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+    font-size: 1rem;
+}
+
+/* 4. Description */
+.product-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 90%;
+}
+
+/* 5. Variant Selectors (Size/Scent) */
+.product-variants {
+    margin-bottom: 2rem;
+}
+
+.variant-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+}
+
+.variant-options {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.variant-options button {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-luxury);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-text-primary);
+    min-width: 60px;
+    text-align: center;
+}
+
+.variant-options button:hover,
+.variant-options button.selected {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-bg-main);
+}
+
+/* 6. Quantity Selector */
+.quantity-selector {
+    margin-bottom: 2rem;
+}
+
+.quantity-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 200px;
+}
+
+.quantity-btn {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--color-text-primary);
+    transition: all 0.3s;
+}
+
+.quantity-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.quantity-input {
+    width: 60px;
+    text-align: center;
+    padding: 0.5rem;
+    border: 1px solid var(--color-border);
+    font-size: 1rem;
+    font-family: var(--font-body);
+    background: transparent;
+    color: var(--color-text-primary);
+}
+
+/* 7. Main Action Button */
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-bg-main);
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-luxury);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8; /* Darker shade of accent */
+    transform: translateY(-2px);
+}
+
+/* 8. Stock Status Warning */
+.stock-warning {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #e53935;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* 9. Additional Info */
+.product-details {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.details-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+}
+
+.details-list {
+    list-style: none;
+    padding: 0;
+}
+
+.details-list li {
+    margin-bottom: 0.8rem;
+    color: var(--color-text-muted);
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-list li span:first-child {
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+/* ===== SKELETON LOADING STATES ===== */
+.skeleton-gallery {
+    background-color: var(--color-bg-secondary);
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 2px;
+}
+
+.skeleton-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 1rem;
+}
+
+.skeleton-text {
+    background-color: var(--color-bg-secondary);
+    border-radius: 4px;
+    height: 1.5rem;
+}
+
+/* Specific Sizes for Skeleton Elements */
+.skeleton-text.title { 
+    height: 3rem; 
+    width: 80%; 
+}
+.skeleton-text.price { 
+    height: 2rem; 
+    width: 30%; 
+}
+.skeleton-text.desc { 
+    height: 1rem; 
+    width: 100%; 
+}
+.skeleton-text.desc:nth-child(4) { 
+    width: 90%; 
+}
+.skeleton-btn { 
+    height: 3.5rem; 
+    width: 100%; 
+    background-color: var(--color-bg-secondary); 
+    margin-top: 2rem; 
+    border-radius: 2px;
+}
+
+/* Pulse Animation */
+.fade-pulse {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .product-wrapper {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .product-title {
+        font-size: 2rem;
+    }
+    
+    .product-description {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-wrapper {
+        padding: 2rem 0;
+    }
+    
+    .variant-options {
+        gap: 0.5rem;
+    }
+    
+    .variant-options button {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+}

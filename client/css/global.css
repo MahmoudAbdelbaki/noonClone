@@ -1,0 +1,501 @@
+/* ============================================================
+   ETHEREAL AROMAS - GLOBAL STYLES
+   Theme: Midnight & Copper (Luxury)
+============================================================
+*/
+
+:root {
+    /* --- MODERN CLEAN PALETTE --- */
+    --color-bg-main: #ffffff;           /* Pure White */
+    --color-bg-secondary: #f4f6f8;      /* Very Light Grey for sections */
+    --color-accent: #2563eb;            /* Royal Blue (Vibrant) */
+    --color-text-primary: #111827;      /* Near Black for contrast */
+    --color-text-muted: #6b7280;        /* Neutral Grey */
+    --color-border: #e5e7eb;            /* Subtle light grey border */
+    --color-overlay: rgba(255, 255, 255, 0.9); /* Light overlay */
+    --color-light-text: #ffffff;        /* White text for dark backgrounds */
+    --color-dark-bg: #1a1a1a;           /* Dark background color - CHANGED to darker */
+    --color-footer-bg: #0a0a0a;         /* Even darker for footer - NEW */
+
+    /* --- TYPOGRAPHY (Google Fonts: 'Inter' or 'Roboto') --- */
+    --font-heading: 'Inter', -apple-system, sans-serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+
+    /* --- LAYOUT & SPACING --- */
+    --container-width: 1200px;
+    --header-height: 80px;
+    --space-sm: 1rem;
+    --space-md: 3rem;
+    --space-lg: 8rem;
+    
+    /* --- ANIMATION --- */
+    --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Snappy & Linear */
+}
+
+/* =========================================
+   1. RESET & BASE STYLES
+========================================= */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s var(--ease-luxury);
+}
+
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+
+/* =========================================
+   2. TYPOGRAPHY SYSTEM
+========================================= */
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--color-text-primary);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.text-italic {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-accent);
+}
+
+.eyebrow {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 0.75rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* =========================================
+   3. COMPONENTS (Buttons, Links)
+========================================= */
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    transition: all 0.4s var(--ease-luxury);
+    cursor: pointer;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    background: transparent;
+}
+
+.btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg-main);
+}
+
+.btn-outline {
+    display: inline-block;
+    border-bottom: 1px solid var(--color-accent);
+    padding-bottom: 5px;
+    color: var(--color-text-primary);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.btn-outline:hover {
+    color: var(--color-accent);
+    padding-bottom: 8px;
+}
+
+.link-arrow {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-top: 1rem;
+}
+
+.link-arrow i {
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+.link-arrow:hover { color: var(--color-accent); }
+.link-arrow:hover i { transform: translateX(8px); }
+
+/* =========================================
+   4. HEADER & NAVIGATION (FIXED - VISIBLE & CENTERED)
+========================================= */
+
+.main-header {
+    position: fixed; /* Changed from absolute to fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    /* COMPLETELY TRANSPARENT - invisible navbar */
+    background-color: transparent;
+    transition: all 0.3s var(--ease-luxury);
+}
+
+/* Center the content properly */
+.main-header .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.main-header .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.main-header .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* MAKE NAVBAR TEXT VISIBLE */
+.logo a {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    color: var(--color-text-primary); /* CHANGED to dark text */
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.nav-link {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-primary); /* CHANGED to dark text */
+    opacity: 0.8;
+    transition: all 0.3s var(--ease-luxury);
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: var(--color-accent);
+    opacity: 1;
+}
+
+.user-actions a {
+    color: var(--color-text-primary); /* CHANGED to dark text */
+    font-size: 1.1rem;
+    position: relative;
+    opacity: 0.8;
+    transition: all 0.3s var(--ease-luxury);
+}
+
+.user-actions a:hover {
+    color: var(--color-accent);
+    opacity: 1;
+}
+
+.cart-count {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    font-size: 0.6rem;
+    background: var(--color-accent);
+    color: var(--color-bg-main);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/* =========================================
+   5. FOOTER (WHITE & CLEAN)
+========================================= */
+
+.main-footer {
+    padding: var(--space-lg) 0 3rem;
+    background-color: var(--color-bg-main); /* WHITE BACKGROUND */
+    border-top: 1px solid var(--color-border); /* Light border */
+    margin-top: .4em;
+}
+
+.footer-inner {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.footer-brand {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-text-primary); /* DARK TEXT */
+    margin-bottom: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+}
+
+.footer-col h4 {
+    color: var(--color-text-primary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+.footer-col a {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted); /* GREY TEXT */
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.footer-col a:hover {
+    color: var(--color-accent);
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 4rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-copy {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    opacity: 0.7;
+}
+
+/* =========================================
+   6. ANIMATIONS
+========================================= */
+
+@keyframes slowZoom {
+    from { transform: scale(1.1); }
+    to { transform: scale(1); }
+}
+
+@keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s var(--ease-luxury) forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   7. RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+    .craft-section { grid-template-columns: 1fr; }
+    .craft-image-wrapper { height: 50vh; }
+    .craft-content { padding: 3rem 2rem; }
+    
+    .footer-inner {
+        gap: 2rem;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header { 
+        padding: 0 1.5rem; 
+    }
+    
+    .main-header .logo {
+        position: static;
+        transform: none;
+        order: 2;
+    }
+    
+    .main-header .nav-left {
+        order: 1;
+        display: none; /* Hide on mobile for now */
+    }
+    
+    .main-header .user-actions {
+        order: 3;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--color-text-primary);
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-right: 1rem;
+    }
+    
+    h1 { font-size: 3rem; }
+    
+    .footer-inner { 
+        flex-direction: column; 
+        text-align: left;
+        gap: 2.5rem;
+    }
+    
+    .footer-col {
+        min-width: 100%;
+    }
+    
+    .footer-brand {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        padding: 0 1rem;
+    }
+    
+    .logo a {
+        font-size: 1.2rem;
+    }
+    
+    .user-actions a {
+        font-size: 1rem;
+        margin-left: 1rem;
+    }
+}
+
+/* =========================================
+   8. UTILITIES
+========================================= */
+
+.hidden { display: none; }
+
+/* Spacing utilities */
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mt-3 { margin-top: 3rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mb-3 { margin-bottom: 3rem; }
+
+/* Text utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Flex utilities */
+.flex { display: flex; }
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* =========================================
+   9. PAGE SPECIFIC PADDING
+   To prevent content from hiding under fixed header
+========================================= */
+
+body {
+    padding-top: var(--header-height);
+}
+
+.main-header {
+    height: var(--header-height);
+}
+
+/* Optional: If you want hero sections to ignore the padding */
+.hero-section {
+    margin-top: calc(-1 * var(--header-height));
+    padding-top: var(--header-height);
+}

@@ -19,11 +19,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+app.use(express.static(path.resolve(__dirname, 'client')));
 
 
-app.get("/", (req, res) => {
-  res.send("API is running...");
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'index.html'));
 });
+
+// app.get("/", (req, res) => {
+//   res.send("API is running...");
+// });
 
 app.use('/api/cart', cartRouter);
 app.use('/api/products', productRouter);

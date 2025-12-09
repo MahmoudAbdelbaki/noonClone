@@ -1,0 +1,194 @@
+/* =========================================
+   HOME PAGE STYLES
+========================================= */
+
+/* =========================================
+   5. HERO SECTION
+========================================= */
+
+.hero-section {
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.hero-bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    /* Dark moody background image */
+    background-image: url('https://images.unsplash.com/photo-1595429035839-c99c298ffdde?q=80&w=1964&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    animation: slowZoom 10s ease-out forwards;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(2, 12, 27, 0.4), var(--color-bg-main));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    max-width: 500px;
+    margin: 1.5rem auto 3rem auto;
+    font-weight: 300;
+}
+
+/* Animated Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.7;
+    z-index: 10;
+}
+
+.scroll-indicator span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+    color: var(--color-text-primary);
+}
+
+.scroll-indicator .line {
+    width: 1px;
+    height: 60px;
+    background-color: var(--color-accent); /* Copper line */
+    animation: scrollLine 2s infinite;
+}
+
+/* =========================================
+   6. FEATURED PRODUCTS
+========================================= */
+
+.featured-section {
+    padding: var(--space-lg) 0;
+    background-color: var(--color-bg-main);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Individual Product Card */
+.product-card {
+    background-color: var(--color-bg-secondary);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: transform 0.4s var(--ease-luxury);
+    border: 1px solid transparent;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-border);
+}
+
+.product-card img {
+    margin: 0 auto 1.5rem auto;
+    border-radius: 2px;
+    mix-blend-mode: luminosity; /* Makes images B&W */
+    transition: mix-blend-mode 0.4s;
+}
+
+.product-card:hover img {
+    mix-blend-mode: normal; /* Color on hover */
+}
+
+.product-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.loading-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--color-border);
+    font-style: italic;
+    padding: 4rem;
+}
+
+/* =========================================
+   7. CRAFT / STORY SECTION
+========================================= */
+
+.craft-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+    margin-top: var(--space-lg);
+}
+
+.craft-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.craft-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Warm, vintage filter for the image */
+    filter: sepia(30%) contrast(110%) brightness(80%);
+}
+
+.craft-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-lg);
+    background-color: var(--color-bg-secondary);
+}
+
+.divider {
+    width: 60px;
+    height: 1px;
+    background-color: var(--color-accent);
+    margin: 2rem 0;
+}
+
+.craft-content p {
+    margin-bottom: 2rem;
+    max-width: 450px;
+    color: var(--color-text-muted);
+}

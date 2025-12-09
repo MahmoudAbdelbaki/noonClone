@@ -1,0 +1,80 @@
+/* =========================================
+   ACCOUNT / DASHBOARD STYLES
+========================================= */
+
+.account-page {
+    padding-top: calc(var(--header-height) + 4rem);
+    min-height: 80vh;
+    background-color: var(--color-bg-main);
+}
+
+.account-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 4rem;
+    position: relative;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    padding-bottom: 2rem;
+}
+
+.logout-btn {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    font-size: 0.75rem;
+    color: #ff6b6b; /* Soft red for logout */
+    border-color: rgba(255, 107, 107, 0.4);
+}
+
+.logout-btn:hover {
+    color: #ff4c4c;
+    border-color: #ff4c4c;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.dash-card {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid transparent;
+    padding: 2.5rem;
+    transition: all 0.3s var(--ease-luxury);
+}
+
+.dash-card:hover {
+    border-color: var(--color-border);
+    transform: translateY(-5px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    color: var(--color-accent);
+}
+
+.card-header h3 {
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.card-header i {
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+.card-content p {
+    margin-bottom: 1rem;
+    color: var(--color-text-muted);
+}
+
+.empty-state {
+    font-style: italic;
+    opacity: 0.6;
+}

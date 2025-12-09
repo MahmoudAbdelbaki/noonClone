@@ -58,4 +58,25 @@ login = async (req, res) => {
     }
 };
 
-module.exports = { register, login };
+const getMe = async (req, res) => {
+    try {
+        // req.user is set by your authenticateUser middleware
+        const user = await User.findById(req.user.userId);
+
+        if (!user) {
+            return res.status(404).json({ success: false, error: 'User not found' });
+        }
+
+        res.status(200).json({
+            success: true,
+            name: user.name,
+            email: user.email,
+            role: user.role
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, error: 'Server Error' });
+    }
+};
+
+// 2. Update module.exports to include getMe
+module.exports = { register, login, getMe };

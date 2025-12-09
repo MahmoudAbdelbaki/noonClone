@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ethereal Aromas - Artisanal fragrances crafted for the modern connoisseur.">
+    <meta name="theme-color" content="#020c1b">
+    
+    <title>Ethereal Aromas | The Art of Scent</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
+    
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="nav-left fade-in">
+            <a href="shop-all.html" class="nav-link">Shop</a>
+            <a href="collections.html" class="nav-link">Collections</a>
+        </nav>
+        
+        <div class="logo fade-in">
+            <a href="index.html">Ethereal Aromas</a>
+        </div>
+        
+        <div class="nav-right user-actions fade-in">
+            <a href="login.html" aria-label="Account" class="nav-icon"><i class="far fa-user"></i></a>
+            <a href="cart.html" aria-label="Cart" class="nav-icon">
+                <i class="fas fa-shopping-bag"></i> 
+                <span class="cart-count"></span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-bg-wrapper">
+                <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1595429035839-c99c298ffdde?q=80&w=1964&auto=format&fit=crop');"></div>
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="hero-content">
+                <span class="eyebrow-hero fade-up">The Autumn Collection</span>
+                <h1 class="fade-up delay-1">Midnight <br><span class="text-italic">Opulence</span></h1>
+                <p class="fade-up delay-2">An olfactory journey into the depths of night. Notes of amber, rare oud, and wild iris.</p>
+                <div class="btn-wrapper fade-up delay-3">
+                    <a href="shop-all.html" class="btn btn-primary">Discover the Scent</a>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <section class="featured-section container">
+            <div class="section-header">
+                <span class="eyebrow">Selections</span>
+                <h2>Curated Favorites</h2>
+                <a href="shop-all.html" class="link-arrow">View All <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+           
+            <div class="products-grid" id="featured-products-container">
+                <p class="loading-message">Retrieving essences...</p>
+            </div>
+        </section>
+
+        <section class="craft-section">
+            <div class="craft-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Ingredients" class="parallax-img">
+            </div>
+            <div class="craft-content">
+                <span class="eyebrow">The Atelier</span>
+                <h2>Crafted with <br><span class="text-italic">Precision</span></h2>
+                <div class="divider"></div>
+                <p>We source the finest botanicals from Grasse to the hidden valleys of Kyoto. Every bottle is a testament to the art of patience, aging our oils in copper vats for singular purity.</p>
+                <a href="about.html" class="btn btn-outline">Read Our Story</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-inner">
+            <div class="footer-col brand-col">
+                <div class="footer-brand">ETHEREAL</div>
+                <p>Artisanal fragrances for the modern soul.</p>
+            </div>
+            <div class="footer-col links-col">
+                <a href="#">Shipping & Returns</a>
+                <a href="#">Concierge</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="footer-col social-col">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Ethereal Aromas. All rights reserved.
+        </div>
+    </footer>
+    
+    <script src="js/global.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>
