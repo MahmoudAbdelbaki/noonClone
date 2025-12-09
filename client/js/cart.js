@@ -1,11 +1,9 @@
 // Cart Management Script - Updated for your API structure
 class CartManager {
-
-    
     constructor() {
         this.cartItems = [];
         this.isLoading = false;
-        this.API_BASE_URL = '/api/cart'; // Correct base URL
+        this.API_BASE_URL = '/api/cart';
         
         this.initialize();
     }
@@ -40,7 +38,6 @@ class CartManager {
         this.showLoading(true);
         
         try {
-            // Use your existing fetchData helper from global.js
             const response = await window.fetchData(this.API_BASE_URL, {
                 method: 'GET'
             });
@@ -49,17 +46,13 @@ class CartManager {
                 const data = await response.json();
                 console.log('📦 Full API response:', data);
                 
-                // EXTRACT CART ITEMS BASED ON YOUR ACTUAL API RESPONSE
-                // Your API returns: { cart: { cartItems: [...] } }
                 if (data.cart && data.cart.cartItems) {
                     this.cartItems = data.cart.cartItems;
                     console.log('✅ Found cartItems:', this.cartItems);
                 } else if (data.cartItems) {
-                    // Alternative: maybe sometimes it's just cartItems at root
                     this.cartItems = data.cartItems;
                     console.log('✅ Found cartItems at root:', this.cartItems);
                 } else {
-                    // Fallback to empty array
                     this.cartItems = [];
                     console.warn('⚠️ No cartItems found in response');
                 }
@@ -98,13 +91,13 @@ class CartManager {
             const response = await window.fetchData(this.API_BASE_URL, {
                 method: 'POST',
                 body: JSON.stringify({
-                    productId: item.product,  // Your API expects productId
-                    amount: newQuantity       // Your API uses "amount" not "quantity"
+                    productId: item.product,
+                    amount: newQuantity
                 })
             });
             
             if (response.ok) {
-                item.amount = newQuantity;  // Update local amount
+                item.amount = newQuantity;
                 this.renderCart();
                 this.updateHeaderCartCount();
             }
@@ -112,7 +105,31 @@ class CartManager {
             console.error('Error updating quantity:', error);
         }
     }
-
+    
+    // MISSING METHOD - ADD THIS
+    async removeItem(itemId) {
+        console.log('🗑️ Removing item:', itemId);
+        
+        try {
+            const response = await window.fetchData(`${this.API_BASE_URL}/${itemId}`, {
+                method: 'DELETE'
+            });
+            
+            if (response.ok) {
+                console.log('✅ Item removed successfully');
+                this.cartItems = this.cartItems.filter(item => item._id !== itemId);
+                this.renderCart();
+                this.updateHeaderCartCount();
+            } else {
+                console.error('❌ Failed to remove item:', response.status);
+            }
+        } catch (error) {
+            console.error('❌ Error removing item:', error);
+            // Show error to user
+            alert('Failed to remove item. Please try again.');
+        }
+    }
+    
     async clearCart() {
         if (!confirm('Are you sure you want to clear your cart?')) return;
         
@@ -124,7 +141,7 @@ class CartManager {
             if (response.ok) {
                 this.cartItems = [];
                 this.renderCart();
-                this.updateHeaderCartCount(); // Update header cart count
+                this.updateHeaderCartCount();
             }
         } catch (error) {
             console.error('Error clearing cart:', error);
@@ -140,13 +157,11 @@ class CartManager {
         
         if (!cartItemsContainer) return;
         
-        // Update item count in the header
         if (itemCountElement) {
             itemCountElement.textContent = this.cartItems.length;
         }
         
         if (this.cartItems.length === 0) {
-            // Show empty cart state
             if (emptyCartElement) emptyCartElement.classList.add('show');
             cartItemsContainer.innerHTML = '';
             if (checkoutBtn) checkoutBtn.disabled = true;
@@ -155,35 +170,28 @@ class CartManager {
             return;
         }
         
-        // Hide empty cart state
         if (emptyCartElement) emptyCartElement.classList.remove('show');
         if (checkoutBtn) checkoutBtn.disabled = false;
         
-        // Update cart subtitle
         if (cartSubtitleElement) {
             cartSubtitleElement.textContent = `${this.cartItems.length} item${this.cartItems.length !== 1 ? 's' : ''} in your cart`;
         }
         
-        // Render cart items
         cartItemsContainer.innerHTML = this.cartItems.map(item => this.createCartItemHTML(item)).join('');
-        
-        // Add event listeners to rendered items
         this.addCartItemEventListeners();
         
-        // Update summary
         const subtotal = this.calculateSubtotal();
         this.updateSummary(subtotal);
     }
     
     createCartItemHTML(item) {
-        // Use your actual API field names
-        const itemId = item._id;  // Your API uses _id
+        const itemId = item._id;
         const name = item.name || 'Product';
         const price = item.price || 0;
-        const quantity = item.amount || 1;  // Your API uses "amount" not "quantity"
+        const quantity = item.amount || 1;
         const image = item.image || 'https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=500&auto=format&fit=crop';
         const description = 'Luxury fragrance crafted with care';
-        const productId = item.product;  // The actual product ID
+        const productId = item.product;
         
         const totalPrice = (price * quantity).toFixed(2);
         const unitPrice = price.toFixed(2);
@@ -241,42 +249,57 @@ class CartManager {
             });
         });
         
-        // Remove buttons
+        // Remove buttons - FIXED: Add debugging
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', (e) => {
+                console.log('🔍 Remove button clicked');
+                e.stopPropagation(); // Prevent event bubbling
+                
                 const itemElement = e.target.closest('.cart-item');
+                if (!itemElement) {
+                    console.error('❌ Could not find cart item element');
+                    return;
+                }
+                
                 const itemId = itemElement.dataset.itemId;
-                this.removeItem(itemId);
+                console.log('🔍 Item ID to remove:', itemId);
+                
+                if (!itemId) {
+                    console.error('❌ No item ID found');
+                    return;
+                }
+                
+                if (confirm('Remove this item from your cart?')) {
+                    this.removeItem(itemId);
+                }
             });
         });
     }
     
-  calculateSubtotal() {
-    return this.cartItems.reduce((total, item) => {
-        const price = item.price || 0;
-        const quantity = item.amount || 1;  // Use "amount"
-        return total + (price * quantity);
-    }, 0);
-}
+    calculateSubtotal() {
+        return this.cartItems.reduce((total, item) => {
+            const price = item.price || 0;
+            const quantity = item.amount || 1;
+            return total + (price * quantity);
+        }, 0);
+    }
+    
     updateSummary(subtotal) {
-        // Update subtotal
         const subtotalElement = document.getElementById('subtotal');
         if (subtotalElement) {
             subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
         }
         
-        // Update total
         const totalElement = document.getElementById('total');
         if (totalElement) {
             totalElement.textContent = `$${subtotal.toFixed(2)}`;
         }
     }
     
-    // Update header cart count without causing recursion
+    // FIXED: Use item.amount instead of item.quantity
     updateHeaderCartCount() {
-        const totalItems = this.cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+        const totalItems = this.cartItems.reduce((total, item) => total + (item.amount || 1), 0);
         
-        // Update all cart count elements on the page
         document.querySelectorAll('.cart-count').forEach(element => {
             element.textContent = totalItems;
         });
@@ -284,8 +307,6 @@ class CartManager {
     
     proceedToCheckout() {
         if (this.cartItems.length === 0) return;
-        
-        // Redirect to checkout page
         window.location.href = 'checkout.html';
     }
     
@@ -320,11 +341,11 @@ class CartManager {
     }
 }
 
-// Initialize cart manager when DOM is loaded
+// Initialize cart manager
 let cartManager;
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 DOM loaded, initializing CartManager');
     cartManager = new CartManager();
 });
 
-// Make cartManager globally available for debugging
 window.cartManager = cartManager;

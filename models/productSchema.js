@@ -24,14 +24,13 @@ const productSchema = new mongoose.Schema({
     category: {
         type: String,
         required: [true, 'Please provide product category'],
-        enum: ['office', 'kitchen', 'bedroom', 'entertainment', 'clothing'], // Example categories
+        enum: ['floral', 'woody', 'fresh', 'oriental', 'citrus'], // Updated for Fragrances
     },
     company: {
         type: String,
         required: [true, 'Please provide company'],
         enum: {
-            values: ['ikea', 'liddy', 'marcos'],
-    
+            values: ['chanel', 'dior', 'gucci', 'versace', 'creed'], // Updated for Fragrances
         },
     },
     colors: {

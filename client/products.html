@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ethereal Aromas - Explore Our Collection">
+    <meta name="theme-color" content="#1a1a1a"> 
+    
+    <title>Shop All | Ethereal Aromas</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/products.css">
+</head>
+<body class="products-page">
+    <header class="main-header dark-text">
+        <nav class="nav-left">
+            <a href="shop-all.html" class="nav-link">Shop</a>
+            <a href="about.html" class="nav-link">About</a>
+        </nav>
+        
+        <div class="logo">
+            <a href="index.html">ETHEREAL AROMAS</a>
+        </div>
+        
+        <div class="user-actions">
+            <a href="search.html" aria-label="Search"><i class="fas fa-search"></i></a>
+            <a href="login.html" aria-label="Account"><i class="far fa-user"></i></a>
+            <a href="cart.html" aria-label="Cart" class="cart-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count" id="cart-header-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Shop All</li>
+            </ol>
+        </nav>
+
+        <div class="products-header">
+            <h1>Our Collection</h1>
+            <p class="products-intro">
+                Discover our curated selection of luxury fragrances, each crafted with precision and passion. 
+                Filter by scent, occasion, or intensity to find your perfect match.
+            </p>
+        </div>
+
+        <div class="products-layout">
+            <!-- Filters Sidebar -->
+            <aside class="filters-sidebar" id="filters-sidebar">
+                <div class="filters-header">
+                    <h2>Filters</h2>
+                    <button class="clear-filters" id="clear-all-filters">Clear All</button>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="filter-group">
+                    <h3 class="filter-title">
+                        Category
+                        <span class="filter-count" id="category-count">0</span>
+                    </h3>
+                    <div class="filter-options" id="category-filters">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Price Filter -->
+                <div class="filter-group">
+                    <h3 class="filter-title">Price Range</h3>
+                    <div class="price-range">
+                        <div class="price-inputs">
+                            <div class="price-input">
+                                <label for="min-price">Min</label>
+                                <input type="number" id="min-price" min="0" max="1000" step="10" placeholder="$0">
+                            </div>
+                            <div class="price-input">
+                                <label for="max-price">Max</label>
+                                <input type="number" id="max-price" min="0" max="1000" step="10" placeholder="$500">
+                            </div>
+                        </div>
+                        <div class="slider-container" id="price-slider">
+                            <div class="slider-track" id="slider-track"></div>
+                            <div class="slider-handle" id="min-handle"></div>
+                            <div class="slider-handle" id="max-handle"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scent Type Filter -->
+                <div class="filter-group">
+                    <h3 class="filter-title">
+                        Scent Type
+                        <span class="filter-count" id="scent-count">0</span>
+                    </h3>
+                    <div class="filter-options" id="scent-filters">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Intensity Filter -->
+                <div class="filter-group">
+                    <h3 class="filter-title">
+                        Intensity
+                        <span class="filter-count" id="intensity-count">0</span>
+                    </h3>
+                    <div class="filter-options" id="intensity-filters">
+                        <div class="filter-option">
+                            <input type="checkbox" id="intensity-light" value="light" class="filter-checkbox">
+                            <label for="intensity-light" class="filter-label">
+                                <span>Light</span>
+                                <span class="filter-count">0</span>
+                            </label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="intensity-medium" value="medium" class="filter-checkbox">
+                            <label for="intensity-medium" class="filter-label">
+                                <span>Medium</span>
+                                <span class="filter-count">0</span>
+                            </label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="intensity-strong" value="strong" class="filter-checkbox">
+                            <label for="intensity-strong" class="filter-label">
+                                <span>Strong</span>
+                                <span class="filter-count">0</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Availability Filter -->
+                <div class="filter-group">
+                    <h3 class="filter-title">Availability</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="in-stock" value="true" class="filter-checkbox">
+                            <label for="in-stock" class="filter-label">In Stock Only</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="on-sale" value="true" class="filter-checkbox">
+                            <label for="on-sale" class="filter-label">On Sale</label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Products Section -->
+            <section class="products-main">
+                <div class="products-header-bar">
+                    <div class="results-count">
+                        Showing <strong id="results-count">0</strong> of <strong id="total-count">0</strong> products
+                    </div>
+                    <div class="sort-container">
+                        <label for="sort-by" class="sort-label">Sort by:</label>
+                        <select id="sort-by" class="sort-select">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name-asc">Name: A to Z</option>
+                            <option value="name-desc">Name: Z to A</option>
+                            <option value="newest">Newest First</option>
+                            <option value="best-selling">Best Selling</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be loaded here by JavaScript -->
+                    <div class="loading-products">
+                        <i class="fas fa-spinner"></i>
+                        <p>Loading products...</p>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination" id="pagination">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Mobile Filters Toggle -->
+    <button class="mobile-filters-toggle" id="mobile-filters-toggle" aria-label="Open filters">
+        <i class="fas fa-filter"></i>
+    </button>
+
+    <footer class="main-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">Ethereal Aromas</div>
+            <div class="footer-col">
+                <a href="#">Shipping & Returns</a>
+                <a href="#">Contact Concierge</a>
+                <a href="#">Instagram</a>
+            </div>
+            <div class="footer-copy">&copy; 2024. Crafted with care.</div>
+        </div>
+    </footer>
+
+    <script src="js/global.js"></script>
+    <script src="js/productsAll.js"></script>
+</body>
+</html>
